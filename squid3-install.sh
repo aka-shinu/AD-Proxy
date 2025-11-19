@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ############################################################
-# AD Proxy Installer
+# fork for vpsbazzar.org
 # Author: Flexeere
 # Email: info@flexeere.com
 # Github: https://github.com/flexeere/AD-Proxy/
@@ -227,11 +227,10 @@ sed -i 's/Squid proxy-caching web server/AD Proxy Service/g'  /etc/squid/squid.c
 
 systemctl restart squid > /dev/null 2>&1
 systemctl restart squid3 > /dev/null 2>&1
+VPS_IP=$(curl -s ifconfig.me || hostname -I | awk '{print $1}')
 
 echo -e "${NC}"
-echo -e "${GREEN}Thank you for using AD Proxy Service.${NC}"
+echo -e "${GREEN}Thank you for using Vps Bazzar.${NC}"
 echo
-echo -e "${CYAN}Username : ${SQUID_USER}${NC}"
-echo -e "${CYAN}Password : ${SQUID_PW}${NC}"
-echo -e "${CYAN}Port : 3128${NC}"
+echo -e "${CYAN}${VPS_IP}:3128:${SQUID_USER}:${SQUID_PW}${NC}"
 echo -e "${NC}"
